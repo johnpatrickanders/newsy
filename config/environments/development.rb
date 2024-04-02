@@ -75,4 +75,6 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   # Use this if developing on localhost.
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+
+  config.active_storage.variant_processor = :mini_magick
 end
