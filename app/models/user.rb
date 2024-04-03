@@ -94,8 +94,9 @@ class User < ApplicationRecord
   # Defines a proto-feed.
   # See "Following users" for the full implementation.
   # "?" blocks SQL injection by escaping the user id.
+  # Returns a user's status feed.
   def feed
-    Micropost.where("user_id = ?", id)
+    Micropost.where("user_id IN (?) OR user_id = ?", following_ids, id)
   end
 
   # Follows a user.
