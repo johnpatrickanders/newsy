@@ -104,6 +104,7 @@ class UserTest < ActiveSupport::TestCase
     # Posts from followed user
     lana.microposts.each do |post_following|
       assert michael.feed.include?(post_following)
+      assert_equal michael.feed.distinct, michael.feed
     end
     # Self-posts for user with followers
     michael.microposts.each do |post_self|
