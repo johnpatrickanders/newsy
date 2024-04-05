@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_02_154040) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_05_153153) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_02_154040) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "articles", force: :cascade do |t|
+    t.text "title"
+    t.text "content"
+    t.integer "user_id", null: false
+    t.string "url"
+    t.integer "source_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_id"], name: "index_articles_on_source_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
   create_table "microposts", force: :cascade do |t|
     t.text "content"
     t.integer "user_id", null: false
@@ -46,6 +58,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_02_154040) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "type"
+    t.integer "group_id"
+    t.integer "user_id"
+    t.string "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -56,6 +77,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_02_154040) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "sources", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "url"
+    t.string "tier"
+    t.date "date_founded"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,7 +105,21 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_02_154040) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "article_id"
+    t.integer "page_id"
+    t.integer "source_id"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "sources"
+  add_foreign_key "articles", "users"
   add_foreign_key "microposts", "users"
+  add_foreign_key "votes", "users"
 end
