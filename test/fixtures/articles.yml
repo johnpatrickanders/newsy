@@ -1,1 +1,15 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+first:
+  content: "Check out the @tauday site by @mhartl: https://tauday.com"
+  created_at: <%= 3.years.ago %>
+  user: michael
+  title: "Testing article"
+  url: "www.example.com"
+  source_id: 1
+
+second:
+  content: "Check out the @tauday site by @mhartl: https://tauday.com"
+  created_at: <%= 3.years.ago %>
+  user: michael
+  title: "Testing article"
+  url: "www.example.com"
+  source_id: 1
