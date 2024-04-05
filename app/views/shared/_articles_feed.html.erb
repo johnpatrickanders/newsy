@@ -1,0 +1,7 @@
+<% if current_user.articles.any? %>
+  <ol class="microposts articles">
+    <%= render current_user.articles %>
+  </ol>
+  <%= will_paginate current_user.articles,
+                    params: { controller: :static_pages, action: :home } %>
+<% end %>
