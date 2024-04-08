@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'og_imager/dev_to'
   root   "static_pages#home"
   get    "/articles", to: "static_pages#articles"
   get    "/help",    to: "static_pages#help"
