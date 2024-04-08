@@ -1,0 +1,16 @@
+<li id="article-<%= article.id %>">
+  <%= link_to gravatar_for(article.user, size: 50), article.user %>
+  <span class="user"><%= link_to article.user.name, article.user %></span></br>
+  <strong class="article"> <%= link_to(article.title, "http://" + article.url) %></strong>
+  <span class="content">
+    <%= article.content %><br/>
+    <i><%= article.url %></i>
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(article.created_at) %> ago.
+    <% if current_user?(article.user) %>
+      <%= link_to "delete", article, data: { "turbo-method": :delete,
+                                               turbo_confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

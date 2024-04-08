@@ -1,15 +1,7 @@
 <% if current_user.articles.any? %>
-  <ol class="microposts articles">
-    <%= render current_user.articles %>
+  <ol class="articles">
+    <%= render @feed_items %>
   </ol>
-  <%= will_paginate current_user.articles,
+  <%= will_paginate @feed_items,
                     params: { controller: :static_pages, action: :home } %>
-<% end %>
-<%= content_for :head do %>
-  <meta property="og:title" content="<%= @article.title %>">
-  <meta property="og:image" content="<%= article_link_preview(@article) %>">
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="1128">
-  <meta property="og:image:height" content="600">
-  <meta name="twitter:card" content="summary_large_image" />
 <% end %>
