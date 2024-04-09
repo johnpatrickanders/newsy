@@ -4,7 +4,7 @@
     <h1>Make a Frontpage</h1>
     <%= f.text_area :duration, placeholder: "Duration" %>
     <%= f.text_area :category, placeholder: "Category" %>
-    <%# <%= f.select :group, group: "Group:" %> %>
+    <%= f.select :group_id, group: "Group:" %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

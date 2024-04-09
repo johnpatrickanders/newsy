@@ -36,3 +36,4 @@ following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
 Source.create!(name: "Default")
+Group.create!(name: "The OG Group")

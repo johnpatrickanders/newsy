@@ -8,7 +8,7 @@ class PagesController < ApplicationController
       flash[:success] = "Page created!"
       redirect_to pages_url
     else
-      @feed_items = current_user.feed.paginate(page: params[:page])
+      @feed_items = current_user.pages.paginate(page: 1)
       render 'static_pages/pages', status: :unprocessable_entity
     end
   end
