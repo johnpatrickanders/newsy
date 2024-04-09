@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :user
+  belongs_to :page
   # belongs_to :source
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true

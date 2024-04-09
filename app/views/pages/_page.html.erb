@@ -1,7 +1,9 @@
 <li id="page-<%= page.id %>">
-  <strong class="page"><%=page.user.name%></strong></br>
-  <span class="duration">
-    <%= page.duration %><br/>
+  <strong class="page">
+    <%= link_to "#{page.user.name} - #{page.created_at.strftime("%B %d, %Y")}", page %>
+  </strong></br>
+  <span class="category">
+    <%= page.category %><br/>
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(page.created_at) %> ago.

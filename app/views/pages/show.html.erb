@@ -1,0 +1,15 @@
+<% provide(:title, @page.user.name) %>
+<div class="row">
+  <div class="col-md-8">
+    <h3>
+      <%= @page.user.name %>
+    </h3>
+    <% if @page.articles.any? %>
+      <strong>Articles (<%= @page.articles.count %>)</strong>
+      <ol class="articles">
+        <%= render @articles %>
+      </ol>
+      <%= will_paginate @articles %>
+    <% end %>
+  </div>
+</div>
