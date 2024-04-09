@@ -1,7 +1,5 @@
 <li id="page-<%= page.id %>">
-  <%= link_to gravatar_for(page.user, size: 50), page.user %>
-  <span class="user"><%= link_to page.user.name, page.user %></span></br>
-  <strong class="page"><%=page.id%></strong>
+  <strong class="page"><%=page.user.name%></strong></br>
   <span class="duration">
     <%= page.duration %><br/>
   </span>
