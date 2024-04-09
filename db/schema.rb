@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_05_153153) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string "type"
+    t.string "category"
     t.integer "group_id"
     t.integer "user_id"
     t.string "duration"
@@ -110,7 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_05_153153) do
     t.integer "article_id"
     t.integer "page_id"
     t.integer "source_id"
-    t.string "type"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_votes_on_user_id"

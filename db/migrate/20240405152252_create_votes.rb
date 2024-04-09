@@ -5,7 +5,7 @@ class CreateVotes < ActiveRecord::Migration[7.0]
       t.integer :article_id
       t.integer :page_id
       t.integer :source_id
-      t.string :type
+      t.string :category
 
       t.timestamps
     end

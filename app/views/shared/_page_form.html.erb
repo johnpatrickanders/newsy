@@ -1,0 +1,10 @@
+<%= form_with(model: @page) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <h1>Make a Frontpage</h1>
+    <%= f.text_area :duration, placeholder: "Duration" %>
+    <%= f.text_area :category, placeholder: "Category" %>
+    <%# <%= f.select :group, group: "Group:" %> %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
