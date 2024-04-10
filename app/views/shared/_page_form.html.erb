@@ -4,7 +4,7 @@
     <h1>Make a Frontpage</h1>
     <%= f.text_area :duration, placeholder: "Duration" %>
     <%= f.text_area :category, placeholder: "Category" %>
-    <%# <%= f.collection_select(:page, :group_id, Group.all, :id, :name) %> %>
+    <%= select(:page, :group_id, current_user.groups.all.collect { |g| [ g.name, g.id ] }, { :prompt => 'Select Group' }) %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
