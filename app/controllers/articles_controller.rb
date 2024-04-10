@@ -23,6 +23,10 @@ class ArticlesController < ApplicationController
     redirect_back_or_to(root_url, status: :see_other) # equivalent to commented out code above
   end
 
+  def photo
+    "rails.svg"
+  end
+
   private
 
     def article_params

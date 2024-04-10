@@ -1,15 +1,17 @@
 <% provide(:title, @page.user.name) %>
-<div class="row">
-  <div class="col-md-8">
-    <h3>
+<div class=".container-fluid">
+  <h3>
       <%= @page.user.name %>
-    </h3>
+  </h3>
     <% if @page.articles.any? %>
       <strong>Articles (<%= @page.articles.count %>)</strong>
-      <ol class="articles">
-        <%= render @articles %>
-      </ol>
+      <% @page.articles.each_slice(3) do |articles|%>
+      <div class="row multi-column">
+      <ul>
+        <%= render articles %>
+      </ul>
       <%= will_paginate @articles %>
+      </div>
+      <% end %>
     <% end %>
-  </div>
 </div>

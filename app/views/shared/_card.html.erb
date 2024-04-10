@@ -1,0 +1,16 @@
+<div class="row">
+<% @articles.each do |article| %>
+  <div class="col-12 col-lg-4">
+      <div class="card text-center text-white" style="background-color:#ffa82e00;">
+        <div class="card photo" class="card-img-top">
+          <%= image_tag article.photo, height: 350, width: 350, crop: :fit if article.photo %>
+          <div class="card-body">
+            <%# <h5 class="card-title"><%= link_to article.title, article_path(article) %></h5> %>
+            <p class="card-text">Source<%= article.url %></p>
+            <button type="button" class="btn btn-primary"><%= link_to article.title, article.url %></button>
+          </div>
+        </div>  
+      </div>
+  </div>
+<% end %>
+</div>
