@@ -8,6 +8,7 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(page.created_at) %> ago.
     <% if current_user?(page.user) %>
+      <%= link_to "edit", page, data: { "turbo-method": :edit } %>
       <%= link_to "delete", page, data: { "turbo-method": :delete,
                                                turbo_confirm: "You sure?" } %>
     <% end %>
