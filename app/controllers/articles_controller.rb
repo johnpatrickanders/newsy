@@ -35,11 +35,7 @@ class ArticlesController < ApplicationController
   private
 
     def article_params
-      params.require(:article).permit(:content, :source_id, :url, :title, :pages) #, page_attributes: [:id]
-    end
-
-    def other_params
-      params.permit(:pages)
+      params.require(:article).permit(:content, :source_id, :url, :title, :pages)
     end
 
     def correct_user
