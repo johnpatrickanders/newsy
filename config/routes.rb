@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   resources :relationships,       only: [:create, :destroy]
   resources :articles,            only: [:create, :destroy]
   resources :pages #,               only: [:create, :edit, :update, :destroy]
+  resources :group #,                only: [:new, :create, :edit, :destroy]
   get '/microposts', to: 'static_pages#home' # Avoid routing error after erroneous post attempt + refresh
 end
