@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_09_195256) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_11_151442) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,7 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_09_195256) do
     t.integer "source_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "page_id"
     t.index ["source_id"], name: "index_articles_on_source_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
@@ -68,6 +67,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_09_195256) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "page_articles", force: :cascade do |t|
+    t.integer "page_id", null: false
+    t.integer "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_page_articles_on_article_id"
+    t.index ["page_id"], name: "index_page_articles_on_page_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -140,6 +148,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_09_195256) do
   add_foreign_key "articles", "sources"
   add_foreign_key "articles", "users"
   add_foreign_key "microposts", "users"
+  add_foreign_key "page_articles", "articles"
+  add_foreign_key "page_articles", "pages"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
   add_foreign_key "votes", "users"

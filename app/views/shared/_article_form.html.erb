@@ -5,7 +5,7 @@
     <%= f.text_area :title, placeholder: "Title" %>
     <%= f.text_area :content, placeholder: "Description" %>
     <%= f.text_area :url, placeholder: "URL:" %>
-    <%= select(:article, :page_id, current_user.pages.collect { |p| [ "#{p.category} - #{p.created_at.strftime("%B %d, %Y")}", p.id ] }, { :prompt => 'Select Page' }) %>
+    <%= select(:article, :pages, current_user.pages.collect { |p| [ "#{p.category} - #{p.created_at.strftime("%B %d, %Y")}", p.id ] }, { :prompt => 'Select Page' }) %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

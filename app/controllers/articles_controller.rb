@@ -3,11 +3,16 @@ class ArticlesController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def create
-    @article = current_user.articles.build(article_params)
+    @article = current_user.articles.build(
+      {title: article_params[:title],
+      content: article_params[:content],
+      url: article_params[:url]}
+    )
 
     # hard code source until source feature built
     @article.source_id = 1
 
+    pa = @article.page_articles.build({page_id: article_params[:pages]})
     if @article.save
       flash[:success] = "Article posted!"
       redirect_to root_url
@@ -30,7 +35,11 @@ class ArticlesController < ApplicationController
   private
 
     def article_params
-      params.require(:article).permit(:content, :source_id, :url, :title, :page_id)
+      params.require(:article).permit(:content, :source_id, :url, :title, :pages) #, page_attributes: [:id]
+    end
+
+    def other_params
+      params.permit(:pages)
     end
 
     def correct_user
